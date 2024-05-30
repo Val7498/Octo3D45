@@ -27,7 +27,8 @@ def upload_file():
     if file:
         #Code taken from https://github.com/dabosch/Dremel-3D45-Undocumented/blob/master/Control_3D45_video.py
         print("Sending to 3D45 Printer...")
-        gcode = {'file': (file.filename, file.stream, file.content_type)}
+        print(file.filename)
+        gcode = {'print_file': (file.filename, file.stream, "multipart/form-data")}
         try:
             res = requests.post(app.config["PRINTER_ADDRESS"] + "/print_file_uploads", files=gcode, timeout=20.0)
             if(eval(res.text)["error_code"] == 200):
