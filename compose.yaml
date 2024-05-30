@@ -1,0 +1,8 @@
+services:
+  octo3d45:
+    build: .
+    restart: always
+    environment:
+      PRINTER_ADDRESS: printer_address_here
+    ports:
+      - "80:80"
